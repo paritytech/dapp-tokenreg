@@ -64,7 +64,7 @@
   },
   "dependencies": {
     "@parity/api": "^2",
-    "@parity/shared": "paritytech/js-shared",
+    "@parity/shared": "^2",
     "material-ui": "0.16.5",
     "react": "15.6.1",
     "react-dom": "15.6.1",
