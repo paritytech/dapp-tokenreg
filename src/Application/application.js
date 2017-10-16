@@ -44,8 +44,13 @@ export default class Application extends Component {
     contract: PropTypes.object
   };
 
+  state = {
+    hideWarning: false
+  };
+
   render () {
     const { isLoading, contract } = this.props;
+    const { hideWarning } = this.state;
 
     if (isLoading) {
       return (
@@ -63,9 +68,15 @@ export default class Application extends Component {
         <Actions />
 
         <Tokens />
-        <div className={ styles.warning }>
-          WARNING: The token registry is experimental. Please ensure that you understand the steps, risks, benefits & consequences of registering a token before doing so. A non-refundable fee of { api.util.fromWei(contract.fee).toFormat(3) }<small>ETH</small> is required for all registrations.
-        </div>
+        {
+          hideWarning
+          ? null
+          : (
+            <div className={ styles.warning } onClick={ this.handleHideWarning }>
+              WARNING: The token registry is experimental. Please ensure that you understand the steps, risks, benefits & consequences of registering a token before doing so. A non-refundable fee of { api.util.fromWei(contract.fee).toFormat(3) }<small>ETH</small> is required for all registrations.
+            </div>
+          )
+        }
       </div>
     );
   }
@@ -74,5 +85,9 @@ export default class Application extends Component {
     return {
       muiTheme
     };
+  }
+
+  handleHideWarning = () => {
+    this.setState({ hideWarning: true });
   }
 }
