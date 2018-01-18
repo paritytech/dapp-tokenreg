@@ -24,7 +24,7 @@ import styles from './status.css';
 
 export default class Status extends Component {
   static propTypes = {
-    address: PropTypes.string.isRequired,
+    // address: PropTypes.string.isRequired,
     fee: PropTypes.object.isRequired
   };
 
@@ -36,6 +36,7 @@ export default class Status extends Component {
         <h1 className={ styles.title }>Token Registry</h1>
         <h3 className={ styles.byline }>A global registry of all recognised tokens on the network</h3>
         <Chip
+          className={ styles.pricing }
           isAddress={ false }
           value={ api.util.fromWei(fee).toFixed(3) + 'ETH' }
           label='Fee'

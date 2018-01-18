@@ -18,14 +18,13 @@
 .status {
   background: rgba(46, 204, 113, 0.85);
   color: rgba(255, 255, 255, 1);
-  padding: 4em 0 2em 0;
-
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
+  padding: 2em 0;
+  text-align: center;
   width: 100%;
+}
+
+.pricing {
+  display: inline-block !important;
 }
 
 .title {

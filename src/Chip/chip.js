@@ -23,29 +23,31 @@ import IdentityIcon from '../IdentityIcon';
 
 import styles from './chip.css';
 
+const STYLE = {
+  background: '#27ae60',
+  display: 'block',
+  margin: '0.5em'
+};
+
 export default class CustomChip extends Component {
   static propTypes = {
     value: PropTypes.string.isRequired,
     label: PropTypes.string.isRequired,
 
+    className: PropTypes.string,
     isAddress: PropTypes.bool,
     displayValue: PropTypes.string
   };
 
   render () {
-    const { isAddress, value, label } = this.props;
+    const { className, isAddress, value, label } = this.props;
 
     const displayValue = this.props.displayValue || value;
 
     return (
       <Chip
-        className={ styles.chip }
-        style={ {
-          margin: '0.5em',
-          background: '#27ae60',
-          display: 'flex',
-          flexDirection: 'column'
-        } }
+        className={ [styles.chip, className].join(' ') }
+        style={ STYLE }
       >
         { this.renderIcon(isAddress, value) }
         <span className={ styles.value } title={ value }>
